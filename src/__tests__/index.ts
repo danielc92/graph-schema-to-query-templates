@@ -32,6 +32,31 @@ describe("config suite", ()=>{
 
   })
 })
+describe("template suite", () => {
+  it("query snapshot WITH args", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/with-args.graphql",
+      outputPath: './output',
+      serviceName: "ArgsTest"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it("query snapshot WITHOUT args", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/no-args.graphql",
+      outputPath: './output',
+      serviceName: "NoArgsTest"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+})
 describe("functionality suite", ()=>{
 
   it("result contains service name + snapshot matches", () => {

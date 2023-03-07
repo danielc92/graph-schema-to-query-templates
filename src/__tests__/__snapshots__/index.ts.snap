@@ -10,3 +10,7 @@ export const template = \`query MyTestService__nested_queries__crab {nested_quer
 export const template = \`query MyTestService__nested_queries__another_nested__joo($k: String) {nested_queries { another_nested { joo(k: $k) {badger  dingo } } }}\`
 export const template = \`mutation MyTestService____mutator($a: Int, $b: [String!]!) {mutator(a: $a b: $b) {tree  mushroom  leaf {badger  dingo } soil }}\`"
 `;
+
+exports[`template suite query snapshot WITH args 1`] = `"export const template = \`query ArgsTest____withargs($args: [String!]!) {withargs(args: $args) }\`"`;
+
+exports[`template suite query snapshot WITHOUT args 1`] = `"export const template = \`query NoArgsTest____withoutargs {withoutargs }\`"`;
