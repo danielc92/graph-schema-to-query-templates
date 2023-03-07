@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`functionality suite result contains service name + snapshot matches 1`] = `
+"export const template = \`query MyTestService____g {g }\`
+export const template = \`query MyTestService____dolphin {dolphin }\`
+export const template = \`query MyTestService____whale {whale {tree  mushroom  leaf {badger  dingo } soil }}\`
+export const template = \`query MyTestService____foo($x: String!, $y: String, $z: [String]!) {foo(x: $x y: $y z: $z) {tree  mushroom  leaf {badger  dingo } soil }}\`
+export const template = \`query MyTestService__nested_queries__hoo($lol: String) {nested_queries { hoo(lol: $lol) {badger  dingo } }}\`
+export const template = \`query MyTestService__nested_queries__crab {nested_queries { crab  }}\`
+export const template = \`query MyTestService__nested_queries__another_nested__joo($k: String) {nested_queries { another_nested { joo(k: $k) {badger  dingo } } }}\`
+export const template = \`mutation MyTestService____mutator($a: Int, $b: [String!]!) {mutator(a: $a b: $b) {tree  mushroom  leaf {badger  dingo } soil }}\`"
+`;
