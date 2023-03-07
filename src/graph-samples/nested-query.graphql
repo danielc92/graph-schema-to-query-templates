@@ -1,0 +1,14 @@
+type Query {
+    nested: NestedQuery
+}
+
+type NestedQuery {
+    foo: String
+    another_nested: SecondNestedQuery
+}
+
+type SecondNestedQuery {
+    bar: String
+    func_a(id: String): String
+    func_b(id: String, weight: Float): String
+}

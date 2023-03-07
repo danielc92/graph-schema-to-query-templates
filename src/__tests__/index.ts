@@ -59,6 +59,17 @@ describe("template suite", () => {
 })
 describe("functionality suite", ()=>{
 
+  it("generating nested queries 3 levels deep", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/nested-query.graphql",
+      outputPath: './output',
+      serviceName: "Nested"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
   it("result contains service name + snapshot matches", () => {
     expect.assertions(2);
     const result = new GqlToTemplate({
