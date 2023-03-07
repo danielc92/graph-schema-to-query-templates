@@ -36,8 +36,11 @@ type Mutation {
     updateBird(id: String): Animal
 }
 ```
+In javascript:
 
 ```js
+import {GqlToTemplate} from 'graph-schema-to-query-templates'
+
 new GqlToTemplate({
   // Link to your source .gql or .graphql file
   inputPath: "output/test.graphql",
