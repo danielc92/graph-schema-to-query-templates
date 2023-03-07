@@ -3,6 +3,7 @@
 This repo contains code that enables conversion of graphql schema files (.gql / .graphql) into query template strings.
 
 ### Notes
+- Supports mjs and cjs imports
 - Supports **nested** queries and mutation types, if `searchTokens` is provided
 - Currently supports building templates from Mutation and Query types (recusively)
 
