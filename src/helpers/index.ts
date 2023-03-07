@@ -9,8 +9,6 @@ export class FieldTransformer {
     this.field = field
   }
     
-  hasArgs = () => this.field.args.length > 0
-
   // todo
   // isDeprecated = () => this.field.astNode?.directives?.some(d => d.name.value === "deprecated") ?? false
 
@@ -32,17 +30,17 @@ export class FieldTransformer {
 }
 
 export const getFieldsFromRoot = (root: GraphQLSchema, typeName: string): GraphQLField<any,any>[] => {
-  const namedType = root?.getTypeMap()[typeName]
+  const namedType = root.getTypeMap()[typeName]
 
   if (!namedType) {
     console.info(`[Info] ${typeName} typename does not exist.`)
     return [] 
   }
 
-  if (namedType instanceof GraphQLScalarType) {
-    // Skip scalars as they produce no fields
-    return []
-  }
+  // if (namedType instanceof GraphQLScalarType) {
+  //   // Skip scalars as they produce no fields
+  //   return []
+  // }
 
   // getFields has a type error for reason, even though it always returns data
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
