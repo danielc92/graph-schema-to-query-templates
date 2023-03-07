@@ -41,7 +41,7 @@ class TemplateBuilder {
     const {serviceName, graphSchema, entry} = this.config;
     const {type, name, args, ancestors} = entry
     const allFields = this._getFieldNamesRecurs(type, graphSchema)
-    const topLevelGraphTemplate = `${name}${args.length ? `(${args.map(arg => `${arg.name}: $${arg.name}`).join(" ")})` : ""} ${allFields ?? "{}"}`
+    const topLevelGraphTemplate = `${name}${args.length ? `(${args.map(arg => `${arg.name}: $${arg.name}`).join(", ")})` : ""} ${allFields}`
     const innerGraphTemplate = ancestors.length ? this._buildAncestorTemplate(ancestors,"",topLevelGraphTemplate) : topLevelGraphTemplate
     const graphqlTemplate =  `${kind.toLocaleLowerCase()} ${serviceName}__${ancestors.join("__")}__${name}${args.length ? `(${args.map(arg => `$${arg.name}: ${arg.type}`).join(", ")})` : ""} {${innerGraphTemplate}}`
     const javascriptTemplate  = `export const template = \`${graphqlTemplate}\``
