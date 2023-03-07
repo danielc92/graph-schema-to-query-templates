@@ -1,0 +1,37 @@
+
+scalar UUID
+
+type Query {
+    g: UUID
+    dolphin: String
+    whale: T
+    foo(x: String!, y: String, z: [String]!): T
+    nested_queries: NestedQueries
+}
+
+type NestedQueries {
+    hoo(lol: String): Z
+    crab: [Int!]!
+    another_nested: AnotherQuery
+
+}
+
+type AnotherQuery {
+    joo(k: String): Z
+}
+
+type T {
+    tree: String
+    mushroom: Int
+    leaf: Z
+    soil: Int
+}
+
+type Z {
+    badger: String
+    dingo: Int
+}
+
+type Mutation {
+    mutator(a: Int, b: [String!]!): T
+}
