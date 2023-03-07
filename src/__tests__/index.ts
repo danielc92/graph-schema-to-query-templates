@@ -59,6 +59,19 @@ describe("template suite", () => {
 })
 describe("functionality suite", ()=>{
 
+  it("generates templates when searchTokens is provided", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/nested-query-custom-name.graphql",
+      outputPath: './output',
+      serviceName: "CustomSearchToken",
+      searchTokens: ["capybara"]
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+
   it("basic mutation snapshot", () => {
     expect.assertions(1);
     const result = new GqlToTemplate({
