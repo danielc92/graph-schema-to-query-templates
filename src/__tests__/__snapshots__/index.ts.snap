@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`functionality suite basic mutation snapshot 1`] = `
+"export const template = \`mutation BasicMutation____updateUser($username: String) {updateUser(username: $username) }\`
+export const template = \`mutation BasicMutation____updateLocation($x: Float, $y: Float) {updateLocation(x: $x, y: $y) {x  y }}\`"
+`;
+
 exports[`functionality suite generating nested queries 3 levels deep 1`] = `
 "export const template = \`query Nested__nested__foo {nested { foo  }}\`
 export const template = \`query Nested__nested__another_nested__bar {nested { another_nested { bar  } }}\`

@@ -59,6 +59,17 @@ describe("template suite", () => {
 })
 describe("functionality suite", ()=>{
 
+  it("basic mutation snapshot", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/basic-mutation.graphql",
+      outputPath: './output',
+      serviceName: "BasicMutation"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
   it("generating nested queries 3 levels deep", () => {
     expect.assertions(1);
     const result = new GqlToTemplate({
