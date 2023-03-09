@@ -1,0 +1,9 @@
+type Query {
+    nested: HappyCapybara
+}
+
+type HappyCapybara {
+    foo: String
+    bar: Float
+    zoo: Boolean
+}

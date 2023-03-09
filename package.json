@@ -1,12 +1,20 @@
 {
   "name": "graphql-schema-to-query",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Generate parametised graphql templates from graphql schema files.",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/types/index.d.ts",
   "files": [
     "dist/**/*"
   ],
+  "bugs": {
+    "url": "https://github.com/danielc92/graph-schema-to-query-templates/issues"
+  },
+  "homepage": "https://github.com/danielc92/graph-schema-to-query-templates",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielc92/graph-schema-to-query-templates.git"
+  },
   "exports": {
     ".": {
       "import": {
@@ -30,9 +38,14 @@
     "lint": "yarn eslint",
     "lint-fix": "yarn eslint --fix"
   },
-  "keywords": ["graphql", "query", "mutation", "template"],
+  "keywords": [
+    "graphql",
+    "query",
+    "mutation",
+    "template"
+  ],
   "author": "Daniel Corcoran",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "graphql": "^16.6.0"
   },

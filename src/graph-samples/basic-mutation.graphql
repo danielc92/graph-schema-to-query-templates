@@ -1,0 +1,9 @@
+type Mutation {
+    updateUser(username: String): String
+    updateLocation(x: Float, y: Float): Coord
+}
+
+type Coord {
+    x: Float
+    y: Float
+}

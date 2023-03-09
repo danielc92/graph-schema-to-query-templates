@@ -32,8 +32,68 @@ describe("config suite", ()=>{
 
   })
 })
+describe("template suite", () => {
+  it("query snapshot WITH args", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/with-args.graphql",
+      outputPath: './output',
+      serviceName: "ArgsTest"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it("query snapshot WITHOUT args", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/no-args.graphql",
+      outputPath: './output',
+      serviceName: "NoArgsTest"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+})
 describe("functionality suite", ()=>{
 
+  it("generates templates when searchTokens is provided", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/nested-query-custom-name.graphql",
+      outputPath: './output',
+      serviceName: "CustomSearchToken",
+      searchTokens: ["capybara"]
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+
+  it("basic mutation snapshot", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/basic-mutation.graphql",
+      outputPath: './output',
+      serviceName: "BasicMutation"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+  it("generating nested queries 3 levels deep", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/nested-query.graphql",
+      outputPath: './output',
+      serviceName: "Nested"
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
   it("result contains service name + snapshot matches", () => {
     expect.assertions(2);
     const result = new GqlToTemplate({
