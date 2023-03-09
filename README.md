@@ -8,6 +8,13 @@ This repo contains code that enables conversion of graphql schema files (.gql / 
 - Currently supports building templates from Mutation and Query types. Templates are built recursively.
 
 ### Usage Example
+
+Installation
+
+```
+npm i graphql-schema-to-query
+```
+
 For example with a schema file `test.graphql`
 ```
 type Query {
@@ -40,7 +47,7 @@ type Mutation {
 Set your input, output paths and serviceName, then call buildCollection and exportCollection.
 
 ```js
-import {GqlToTemplate} from 'graph-schema-to-query-templates'
+import {GqlToTemplate} from 'graphql-schema-to-query'
 
 new GqlToTemplate({
   // Link to your source .gql or .graphql file

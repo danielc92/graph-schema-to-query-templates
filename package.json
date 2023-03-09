@@ -7,6 +7,14 @@
   "files": [
     "dist/**/*"
   ],
+  "bugs": {
+    "url": "https://github.com/danielc92/graph-schema-to-query-templates/issues"
+  },
+  "homepage": "https://github.com/danielc92/graph-schema-to-query-templates",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielc92/graph-schema-to-query-templates.git"
+  },
   "exports": {
     ".": {
       "import": {
@@ -32,7 +40,7 @@
   },
   "keywords": ["graphql", "query", "mutation", "template"],
   "author": "Daniel Corcoran",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "graphql": "^16.6.0"
   },
