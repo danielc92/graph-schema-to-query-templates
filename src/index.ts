@@ -53,7 +53,9 @@ class GqlToTemplate {
     
     // output
     data.forEach(({entry, template}) => {
-      fs.writeFileSync(path.resolve(outputPath, `${serviceName}__${entry.name}.${extension}`), template)
+      const {ancestors, name} = entry;
+      const exportedName = `${serviceName}__${ancestors.join("__")}__${name}`
+      fs.writeFileSync(path.resolve(outputPath, `${exportedName}.${extension}`), template)
     })
 
     if (debug) {
