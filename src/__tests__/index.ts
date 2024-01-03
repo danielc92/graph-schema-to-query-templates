@@ -1,6 +1,32 @@
 import { GqlToTemplate } from "../index"
 
+const invalidServiceNameError = "serviceName must only contain lower/upper case letters"
 describe("config suite", ()=>{
+  it("config throws error when serviceName has no length", () => {
+    expect.assertions(1);
+    expect(() => new GqlToTemplate({
+      inputPath: "./src/graph-samples/sample.graphql",
+      outputPath: './output',
+      serviceName: ""
+    })).toThrow(invalidServiceNameError)
+  })
+  it("config throws error when serviceName contains numbers", () => {
+    expect.assertions(1);
+    expect(() => new GqlToTemplate({
+      inputPath: "./src/graph-samples/sample.graphql",
+      outputPath: './output',
+      serviceName: "Service123"
+    })).toThrow(invalidServiceNameError)
+  })
+  it("config throws error when serviceName contains non chars", () => {
+    expect.assertions(1);
+    expect(() => new GqlToTemplate({
+      inputPath: "./src/graph-samples/sample.graphql",
+      outputPath: './output',
+      serviceName: "Service-Service_Service"
+    })).toThrow(invalidServiceNameError)
+  })
+
   it("should have a default searchToken list if not provided", ()=>{
     expect.assertions(1);
     const gql = new GqlToTemplate({
@@ -118,5 +144,18 @@ describe("functionality suite", ()=>{
       .exportCollection({debug: true})
 
     expect(spyer).toHaveBeenCalled()
+  })
+
+  it("when uniqueExports is true, the snapshot matches", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/sample.graphql",
+      outputPath: './output',
+      serviceName: "MyTestService",
+      uniqueExports: true
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
   })
 })

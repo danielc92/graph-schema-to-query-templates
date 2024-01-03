@@ -18,7 +18,12 @@ class GqlToTemplate {
   collection: EntryCollection
 
   constructor(config: GqlToTemplateConfig) {
-    this.config = {...config, searchTokens: config.searchTokens ?? ["query", "queries", "mutation", "mutations"]}
+    if (!/^[a-zA-Z]+$/.test(config.serviceName)) throw new Error("serviceName must only contain lower/upper case letters")
+    this.config = {
+      ...config, 
+      uniqueExports: Boolean(config.uniqueExports), 
+      searchTokens: config.searchTokens ?? ["query", "queries", "mutation", "mutations"]
+    }
     this.outputPath = config.outputPath
     const typeDef = fs.readFileSync(path.resolve(config.inputPath), 'utf-8');
     const source = new Source(typeDef);
@@ -43,9 +48,9 @@ class GqlToTemplate {
   exportCollection = (options : ExportCollectionOptions= {}) => {
 
     const {extension = "js", debug = false} = options;
-    const {serviceName} = this.config;
+    const {serviceName, uniqueExports} = this.config;
     const {collection, outputPath} = this;
-    const templateBuilderOptions = {graphSchema: this.root, serviceName}
+    const templateBuilderOptions = {graphSchema: this.root, serviceName, uniqueExports}
     
     const queries = collection["Query"].map(entry => ({entry, template: new TemplateBuilder({entry, ...templateBuilderOptions}).intoJsTemplate("Query")}));
     const mutations = collection["Mutation"].map(entry => ({entry, template: new TemplateBuilder({entry, ...templateBuilderOptions}).intoJsTemplate("Mutation")}));

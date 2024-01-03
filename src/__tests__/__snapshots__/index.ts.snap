@@ -1,34 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`functionality suite basic mutation snapshot 1`] = `
-"export const template = \`mutation BasicMutation____updateUser($username: String) {updateUser(username: $username) }\`
-export const template = \`mutation BasicMutation____updateLocation($x: Float, $y: Float) {updateLocation(x: $x, y: $y) {x  y }}\`"
+"export const template = \`mutation BasicMutation____updateUser($username: String) {updateUser(username: $username) }\`;
+export const template = \`mutation BasicMutation____updateLocation($x: Float, $y: Float) {updateLocation(x: $x, y: $y) {x  y }}\`;"
 `;
 
 exports[`functionality suite generates templates when searchTokens is provided 1`] = `
-"export const template = \`query CustomSearchToken__nested__foo {nested { foo  }}\`
-export const template = \`query CustomSearchToken__nested__bar {nested { bar  }}\`
-export const template = \`query CustomSearchToken__nested__zoo {nested { zoo  }}\`"
+"export const template = \`query CustomSearchToken__nested__foo {nested { foo  }}\`;
+export const template = \`query CustomSearchToken__nested__bar {nested { bar  }}\`;
+export const template = \`query CustomSearchToken__nested__zoo {nested { zoo  }}\`;"
 `;
 
 exports[`functionality suite generating nested queries 3 levels deep 1`] = `
-"export const template = \`query Nested__nested__foo {nested { foo  }}\`
-export const template = \`query Nested__nested__another_nested__bar {nested { another_nested { bar  } }}\`
-export const template = \`query Nested__nested__another_nested__func_a($id: String) {nested { another_nested { func_a(id: $id)  } }}\`
-export const template = \`query Nested__nested__another_nested__func_b($id: String, $weight: Float) {nested { another_nested { func_b(id: $id, weight: $weight)  } }}\`"
+"export const template = \`query Nested__nested__foo {nested { foo  }}\`;
+export const template = \`query Nested__nested__another_nested__bar {nested { another_nested { bar  } }}\`;
+export const template = \`query Nested__nested__another_nested__func_a($id: String) {nested { another_nested { func_a(id: $id)  } }}\`;
+export const template = \`query Nested__nested__another_nested__func_b($id: String, $weight: Float) {nested { another_nested { func_b(id: $id, weight: $weight)  } }}\`;"
 `;
 
 exports[`functionality suite result contains service name + snapshot matches 1`] = `
-"export const template = \`query MyTestService____g {g }\`
-export const template = \`query MyTestService____dolphin {dolphin }\`
-export const template = \`query MyTestService____whale {whale {tree  mushroom  leaf {badger  dingo } soil }}\`
-export const template = \`query MyTestService____foo($x: String!, $y: String, $z: [String]!) {foo(x: $x, y: $y, z: $z) {tree  mushroom  leaf {badger  dingo } soil }}\`
-export const template = \`query MyTestService__nested_queries__hoo($lol: String) {nested_queries { hoo(lol: $lol) {badger  dingo } }}\`
-export const template = \`query MyTestService__nested_queries__crab {nested_queries { crab  }}\`
-export const template = \`query MyTestService__nested_queries__another_nested__joo($k: String) {nested_queries { another_nested { joo(k: $k) {badger  dingo } } }}\`
-export const template = \`mutation MyTestService____mutator($a: Int, $b: [String!]!) {mutator(a: $a, b: $b) {tree  mushroom  leaf {badger  dingo } soil }}\`"
+"export const template = \`query MyTestService____g {g }\`;
+export const template = \`query MyTestService____dolphin {dolphin }\`;
+export const template = \`query MyTestService____whale {whale {tree  mushroom  leaf {badger  dingo } soil }}\`;
+export const template = \`query MyTestService____foo($x: String!, $y: String, $z: [String]!) {foo(x: $x, y: $y, z: $z) {tree  mushroom  leaf {badger  dingo } soil }}\`;
+export const template = \`query MyTestService__nested_queries__hoo($lol: String) {nested_queries { hoo(lol: $lol) {badger  dingo } }}\`;
+export const template = \`query MyTestService__nested_queries__crab {nested_queries { crab  }}\`;
+export const template = \`query MyTestService__nested_queries__another_nested__joo($k: String) {nested_queries { another_nested { joo(k: $k) {badger  dingo } } }}\`;
+export const template = \`mutation MyTestService____mutator($a: Int, $b: [String!]!) {mutator(a: $a, b: $b) {tree  mushroom  leaf {badger  dingo } soil }}\`;"
 `;
 
-exports[`template suite query snapshot WITH args 1`] = `"export const template = \`query ArgsTest____withargs($args: [String!]!) {withargs(args: $args) }\`"`;
+exports[`functionality suite when uniqueExports is true, the snapshot matches 1`] = `
+"export const MyTestService____g = \`query MyTestService____g {g }\`;
+export const MyTestService____dolphin = \`query MyTestService____dolphin {dolphin }\`;
+export const MyTestService____whale = \`query MyTestService____whale {whale {tree  mushroom  leaf {badger  dingo } soil }}\`;
+export const MyTestService____foo = \`query MyTestService____foo($x: String!, $y: String, $z: [String]!) {foo(x: $x, y: $y, z: $z) {tree  mushroom  leaf {badger  dingo } soil }}\`;
+export const MyTestService__nested_queries__hoo = \`query MyTestService__nested_queries__hoo($lol: String) {nested_queries { hoo(lol: $lol) {badger  dingo } }}\`;
+export const MyTestService__nested_queries__crab = \`query MyTestService__nested_queries__crab {nested_queries { crab  }}\`;
+export const MyTestService__nested_queries__another_nested__joo = \`query MyTestService__nested_queries__another_nested__joo($k: String) {nested_queries { another_nested { joo(k: $k) {badger  dingo } } }}\`;
+export const MyTestService____mutator = \`mutation MyTestService____mutator($a: Int, $b: [String!]!) {mutator(a: $a, b: $b) {tree  mushroom  leaf {badger  dingo } soil }}\`;"
+`;
 
-exports[`template suite query snapshot WITHOUT args 1`] = `"export const template = \`query NoArgsTest____withoutargs {withoutargs }\`"`;
+exports[`template suite query snapshot WITH args 1`] = `"export const template = \`query ArgsTest____withargs($args: [String!]!) {withargs(args: $args) }\`;"`;
+
+exports[`template suite query snapshot WITHOUT args 1`] = `"export const template = \`query NoArgsTest____withoutargs {withoutargs }\`;"`;
