@@ -15,7 +15,8 @@ export type GqlToTemplateConfig = {
   inputPath: string,
   searchTokens?: string[],
   outputPath: string,
-  serviceName: string
+  serviceName: string,
+  uniqueExports?: boolean
 }
 
 export type EntryCollection = Record<SupportedQueryTypes, Entry[]>
