@@ -7,6 +7,7 @@ type TemplateBuilderConfig = {
     entry: Entry
     serviceName: string
     uniqueExports?: boolean
+    excludeFieldNames: string[]
 }
 class TemplateBuilder {
   
@@ -23,7 +24,9 @@ class TemplateBuilder {
     const parsedType =  this._cleanType(rawType)
     if (graphSchema.getTypeMap()[parsedType] instanceof GraphQLObjectType) {
       const fields = getFieldsFromRoot(graphSchema, parsedType)
-      return `{${fields.map(f => `${f.name} ${this._getFieldNamesRecurs(f.type.toString(), graphSchema)}`).join(" ")}}`
+      return `{${fields
+        .filter(f => !this.config.excludeFieldNames.includes(f.name))
+        .map(f => `${f.name} ${this._getFieldNamesRecurs(f.type.toString(), graphSchema)}`).join(" ")}}`
     } 
     return ""
   }
@@ -41,7 +44,7 @@ class TemplateBuilder {
   intoJsTemplate = (kind: SupportedQueryTypes):string => {
     const {serviceName, graphSchema, entry} = this.config;
     const {type, name, args, ancestors} = entry
-    const allFields = this._getFieldNamesRecurs(type, graphSchema)
+    const allFields = this._getFieldNamesRecurs(type, graphSchema) 
     const topLevelGraphTemplate = `${name}${args.length ? `(${args.map(arg => `${arg.name}: $${arg.name}`).join(", ")})` : ""} ${allFields}`
     const innerGraphTemplate = ancestors.length ? this._buildAncestorTemplate(ancestors,"",topLevelGraphTemplate) : topLevelGraphTemplate
     const templateName = `${serviceName}__${ancestors.join("__")}__${name}`

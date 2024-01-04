@@ -21,6 +21,7 @@ class GqlToTemplate {
     if (!/^[a-zA-Z]+$/.test(config.serviceName)) throw new Error("serviceName must only contain lower/upper case letters")
     this.config = {
       ...config, 
+      excludeFieldNames: config.excludeFieldNames ?? [],
       uniqueExports: Boolean(config.uniqueExports), 
       searchTokens: config.searchTokens ?? ["query", "queries", "mutation", "mutations"]
     }
@@ -48,9 +49,9 @@ class GqlToTemplate {
   exportCollection = (options : ExportCollectionOptions= {}) => {
 
     const {extension = "js", debug = false} = options;
-    const {serviceName, uniqueExports} = this.config;
+    const {serviceName, uniqueExports, excludeFieldNames} = this.config;
     const {collection, outputPath} = this;
-    const templateBuilderOptions = {graphSchema: this.root, serviceName, uniqueExports}
+    const templateBuilderOptions = {graphSchema: this.root, serviceName, uniqueExports, excludeFieldNames}
     
     const queries = collection["Query"].map(entry => ({entry, template: new TemplateBuilder({entry, ...templateBuilderOptions}).intoJsTemplate("Query")}));
     const mutations = collection["Mutation"].map(entry => ({entry, template: new TemplateBuilder({entry, ...templateBuilderOptions}).intoJsTemplate("Mutation")}));

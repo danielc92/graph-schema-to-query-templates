@@ -1,6 +1,7 @@
 import { GqlToTemplate } from "../index"
 
 const invalidServiceNameError = "serviceName must only contain lower/upper case letters"
+
 describe("config suite", ()=>{
   it("config throws error when serviceName has no length", () => {
     expect.assertions(1);
@@ -153,6 +154,20 @@ describe("functionality suite", ()=>{
       outputPath: './output',
       serviceName: "MyTestService",
       uniqueExports: true
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
+  
+  it("hiding field names can be done via excludeFieldNames config option", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/recursive-example.graphql",
+      outputPath: './output',
+      serviceName: "RecursiveExampleService",
+      uniqueExports: true,
+      excludeFieldNames: ["record"]
     }).buildCollection()
       .exportCollection({debug: true})
 
