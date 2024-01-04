@@ -18,6 +18,8 @@ export const template = \`query Nested__nested__another_nested__func_a($id: Stri
 export const template = \`query Nested__nested__another_nested__func_b($id: String, $weight: Float) {nested { another_nested { func_b(id: $id, weight: $weight)  } }}\`;"
 `;
 
+exports[`functionality suite hiding field names can be done via excludeFieldNames config option 1`] = `"export const RecursiveExampleService____get = \`query RecursiveExampleService____get {get {status  timestamp  data {name }}}\`;"`;
+
 exports[`functionality suite result contains service name + snapshot matches 1`] = `
 "export const template = \`query MyTestService____g {g }\`;
 export const template = \`query MyTestService____dolphin {dolphin }\`;

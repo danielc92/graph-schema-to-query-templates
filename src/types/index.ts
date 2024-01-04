@@ -14,6 +14,7 @@ export type SupportedQueryTypes = "Mutation" | "Query"
 export type GqlToTemplateConfig = {
   inputPath: string,
   searchTokens?: string[],
+  excludeFieldNames?: string[],
   outputPath: string,
   serviceName: string,
   uniqueExports?: boolean

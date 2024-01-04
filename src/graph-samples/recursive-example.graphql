@@ -1,0 +1,15 @@
+
+type RecursiveRecord {
+  name: String
+  record: RecursiveRecord
+}
+
+type Response {
+  status: String
+  timestamp: Int!
+  data: RecursiveRecord
+}
+
+type Query {
+  get: Response
+}
