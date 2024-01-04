@@ -29,6 +29,8 @@ export const template = \`query MyTestService__nested_queries__another_nested__j
 export const template = \`mutation MyTestService____mutator($a: Int, $b: [String!]!) {mutator(a: $a, b: $b) {tree  mushroom  leaf {badger  dingo } soil }}\`;"
 `;
 
+exports[`functionality suite should not recurse beyond 1 level 1`] = `"export const MyTestService____get = \`query MyTestService____get {get {status  data {name  age  childRecord {name  age }}}}\`;"`;
+
 exports[`functionality suite when uniqueExports is true, the snapshot matches 1`] = `
 "export const MyTestService____g = \`query MyTestService____g {g }\`;
 export const MyTestService____dolphin = \`query MyTestService____dolphin {dolphin }\`;

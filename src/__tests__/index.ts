@@ -158,4 +158,17 @@ describe("functionality suite", ()=>{
 
     expect(result).toMatchSnapshot()
   })
+
+  it("should not recurse beyond 1 level", () => {
+    expect.assertions(1);
+    const result = new GqlToTemplate({
+      inputPath: "./src/graph-samples/basic-recursion.graphql",
+      outputPath: './output',
+      serviceName: "MyTestService",
+      uniqueExports: true
+    }).buildCollection()
+      .exportCollection({debug: true})
+
+    expect(result).toMatchSnapshot()
+  })
 })

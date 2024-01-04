@@ -1,0 +1,14 @@
+
+type ResponseType {
+    status: String!
+    data: Record
+}
+
+type Record {
+    name: String!
+    age: Int!
+    childRecord: Record
+}
+type Query {
+    get: ResponseType
+}
